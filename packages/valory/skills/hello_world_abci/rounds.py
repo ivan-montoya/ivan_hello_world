@@ -36,6 +36,7 @@ from packages.valory.skills.abstract_round_abci.base import (
 from packages.valory.skills.hello_world_abci.payloads import (
     CollectRandomnessPayload,
     PrintMessagePayload,
+    PrintMessageCountPayload,
     RegistrationPayload,
     ResetPayload,
     SelectKeeperPayload,
@@ -69,6 +70,11 @@ class SynchronizedData(
             List[str],
             self.db.get_strict("printed_messages"),
         )
+    
+    @property
+    def print_message_count(self) -> int:
+        """Get the print message count."""
+        return self.db.print_message_count
 
 
 class HelloWorldABCIAbstractRound(AbstractRound, ABC):
@@ -147,6 +153,17 @@ class PrintMessageRound(CollectDifferentUntilAllRound, HelloWorldABCIAbstractRou
         return None
 
 
+class PrintMessageCountRound(CollectSameUntilThresholdRound, HelloWorldABCIAbstractRound):
+
+    payload_class = PrintMessageCountPayload
+    synchronized_data_class = SynchronizedData
+    done_event = Event.DONE
+    none_event = Event.NONE
+    no_majority_event = Event.NO_MAJORITY
+    collection_key = get_name(SynchronizedData.participant_to_selection)
+    selection_key = get_name(SynchronizedData.print_message_count)
+
+
 class ResetAndPauseRound(CollectSameUntilThresholdRound, HelloWorldABCIAbstractRound):
     """A round that represents that consensus is reached (the final round)"""
 
@@ -218,7 +235,12 @@ class HelloWorldAbciApp(AbciApp[Event]):
             Event.ROUND_TIMEOUT: RegistrationRound,
         },
         PrintMessageRound: {
+            Event.DONE: PrintMessageCountRound,
+            Event.ROUND_TIMEOUT: RegistrationRound,
+        },
+        PrintMessageCountRound: {
             Event.DONE: ResetAndPauseRound,
+            Event.NO_MAJORITY: ResetAndPauseRound,
             Event.ROUND_TIMEOUT: RegistrationRound,
         },
         ResetAndPauseRound: {
