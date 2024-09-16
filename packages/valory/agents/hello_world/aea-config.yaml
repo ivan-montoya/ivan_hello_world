@@ -69,6 +69,7 @@ models:
       log_dir: ${str:/benchmarks}
   params:
     args:
+      ethereum_owner_address: ${str:'0xABC0000000000000000000000000000000000123'}
       hello_world_message: ${str:HELLO_WORLD!}
       reset_pause_duration: ${int:10}
       service_registry_address: ${str:null}

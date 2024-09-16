@@ -31,6 +31,7 @@ type: skill
         share_tm_config_on_startup: ${SHARE_TM_CONFIG_ON_STARTUP:bool:false}
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
+        ethereum_owner_address: ${ETHEREUM_OWNER_ADDRESS_0:str:0xABC0000000000000000000000000000000000123}
         hello_world_message: ${HELLO_WORLD_STRING_0:str:HELLO_WORLD! (from Agent 0)}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
@@ -43,6 +44,7 @@ type: skill
         share_tm_config_on_startup: ${SHARE_TM_CONFIG_ON_STARTUP:bool:false}
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
+        ethereum_owner_address: ${ETHEREUM_OWNER_ADDRESS_1:str:0xABC1000000000000000000000000000000000123}
         hello_world_message: ${HELLO_WORLD_STRING_1:str:HELLO_WORLD! (from Agent 1)}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
@@ -55,6 +57,7 @@ type: skill
         share_tm_config_on_startup: ${SHARE_TM_CONFIG_ON_STARTUP:bool:false}
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
+        ethereum_owner_address: ${ETHEREUM_OWNER_ADDRESS_2:str:0xABC2000000000000000000000000000000000123}
         hello_world_message: ${HELLO_WORLD_STRING_2:str:HELLO_WORLD! (from Agent 2)}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
@@ -67,6 +70,7 @@ type: skill
         share_tm_config_on_startup: ${SHARE_TM_CONFIG_ON_STARTUP:bool:false}
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
+        ethereum_owner_address: ${ETHEREUM_OWNER_ADDRESS_3:str:0xABC3000000000000000000000000000000000123}
         hello_world_message: ${HELLO_WORLD_STRING_3:str:HELLO_WORLD! (from Agent 3)}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:

@@ -194,9 +194,12 @@ class PrintMessageBehaviour(HelloWorldABCIBaseBehaviour, ABC):
             message = ":|"
 
         printed_message = f"Agent {self.context.agent_name} (address {self.context.agent_address}) in period {self.synchronized_data.period_count} says: {message}"
+        address_message = f"Hello World! The owner address is {self.params.ethereum_address_string}"
 
         print(printed_message)
+        print(address_message)
         self.context.logger.info(f"printed_message={printed_message}")
+        self.context.logger.info(f"address_message={address_message}")
 
         payload = PrintMessagePayload(self.context.agent_address, printed_message)
 
