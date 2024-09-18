@@ -16,7 +16,7 @@ make clean
 
 autonomy push-all
 
-autonomy fetch --local --service valory/hello_world && cd hello_world
+autonomy fetch --local --service valory/hello_world:0.1.0 && cd hello_world
 
 # Build the image
 autonomy init --reset --author valory --remote --ipfs --ipfs-node "/dns/registry.autonolas.tech/tcp/443/https"
